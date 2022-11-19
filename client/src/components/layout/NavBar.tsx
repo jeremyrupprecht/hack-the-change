@@ -1,22 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { theme } from '@/styles/theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function NavBar(): JSX.Element {
   return (
     <Nav>
-      <div className="menu left-side">
-        <Link to="/">
-        </Link>
-        <div className="right-side">
-          <NavLink
-            className="nav-link"
-            to="/home"
-          >
-          </NavLink>
-          <NavLink className="nav-link" to="/activities">
-          </NavLink>
-          <NavLink className="nav-link" to="/settings">
-          </NavLink>
+      <h1>MindFULL+</h1>
+      <div className='logout-user-icon'>
+        <h2 className='logout'>Logout</h2>
+        <div className='user-icon'>
+          <FontAwesomeIcon className='icon' icon={faUser} />
         </div>
       </div>
     </Nav>
@@ -24,45 +19,38 @@ export default function NavBar(): JSX.Element {
 }
 
 const Nav = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: #1cca9e;
+  background-color: ${theme.bluewood};
   height: 60px;
-  width: 100%;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  color: ${theme.white};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 
-  .menu {
-    padding: 0 24px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+  .logout-user-icon {
     display: flex;
+    flex-direction: row;
+    align-items: center;
 
-    .logo {
-      width: 110px;
-      justify-self: start;
+    .logout {
+      margin-right: 30px;
     }
 
-    .nav-link {
-      margin-left: 14px;
-      padding: 10px;
+    .user-icon {
+      background-color: ${theme.white};
+      width: 46px;
+      height: 46px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      svg {
+      .icon {
+        /* background-color: ${theme.bluewood}; */
+        color: ${theme.bluewood};
+        width: 24px;
         height: 28px;
-        width: 28px;
-
-        &.solid-icon {
-          display: none;
-        }
-      }
-
-      &.active {
-        svg {
-          display: none;
-          &.solid-icon {
-            display: inline;
-          }
-        }
       }
     }
   }
