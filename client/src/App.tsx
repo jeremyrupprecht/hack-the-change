@@ -10,7 +10,8 @@ export default function App() {
   return (
       <Fragment>
         <GlobalStyles />
-        <NavBar />
+        {/* Comment NavBar if not logged in */}
+        {/* <NavBar /> */}
         <Outlet />
         <ScrollRestoration />
       </Fragment>
