@@ -63,6 +63,7 @@ model PollResponse {
   feeling   String
   sentiment String
   method    String
+  reason    String
   poll      Poll     @relation(fields: [pollId], references: [id])
   pollId    String
   user      User     @relation(fields: [userId], references: [id])
