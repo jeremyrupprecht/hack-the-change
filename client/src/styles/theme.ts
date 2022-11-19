@@ -2,8 +2,9 @@
 export const theme = {
   white: '#FFFFFF',
   bluewood: '#2A3B45',
-  background: '#ACACAC',
-  gray: '#727377',
+  background: '#EEEEEE',
+  gray: '#ACACAC',
+  mediumGray: '#727377',
   darkGray: '#3B3C3E',
 };
 

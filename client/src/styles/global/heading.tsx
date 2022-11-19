@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import { device } from 'src/styles/theme';
 
 const fontFamily = css`
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, sans-serif;
 `;
 
 const h6 = css`
@@ -24,10 +24,12 @@ const h3 = css`
 
 const h2 = css`
   ${fontFamily}
+  font-size: 20px;
 `;
 
 const h1 = css`
   ${fontFamily}
+  font-size: 34px;
 `;
 
 export {
