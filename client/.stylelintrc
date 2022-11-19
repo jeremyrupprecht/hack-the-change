@@ -1,0 +1,16 @@
+{
+  "customSyntax": "postcss-jsx",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "color-hex-case": "upper",
+    "value-keyword-case": null,
+    "no-empty-first-line": null,
+    "function-name-case": null,
+    "font-weight-notation": "numeric",
+    "string-quotes": "single",
+    "indentation": [2, { "baseIndentLevel": 1 }]
+  }
+}
