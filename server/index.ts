@@ -20,6 +20,10 @@ app.get("/", (_req, res: Response) => {
   res.send(`Server is running on port: ${port}`);
 });
 
+// Response Routes
+const responses = require('./routes/response');
+app.use('/api/responses', responses);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
