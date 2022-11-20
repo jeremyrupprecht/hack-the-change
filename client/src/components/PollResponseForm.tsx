@@ -4,7 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 
-function PollResponseForm() {
+function PollResponseForm(pollId: string) {
   const [studentAnswer, setStudentAnswer] = useState("");
 
 

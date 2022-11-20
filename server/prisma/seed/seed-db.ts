@@ -12,7 +12,7 @@ export async function seedUsers(): Promise<void> {
     }
   });
 
-  const student1 = await prisma.user.create({data: 
+  const user1 = await prisma.user.create({data: 
     {
       email: 'student6@gmail.com',
       name: 'Richard',
@@ -21,7 +21,7 @@ export async function seedUsers(): Promise<void> {
     }
   });
 
-  const student2 = await prisma.user.create({data: 
+  const user2 = await prisma.user.create({data: 
     {
       email: 'student7@gmail.com',
       name: 'Billy',
@@ -47,6 +47,20 @@ export async function seedUsers(): Promise<void> {
         description: 'Intro to Computer Science'
     }
   });
+
+  const student1 = await prisma.student.create({
+    data: {
+      userId: user1.id,
+      courseId: newCourse.id
+    }
+  })
+
+  const student2 = await prisma.student.create({
+    data: {
+      userId: user1.id,
+      courseId: newCourse2.id
+    }
+  })
 
   const newPoll1 = await prisma.poll.create({
       data: {         
@@ -80,7 +94,7 @@ const newPoll4 = await prisma.poll.create({
     data: {
         response: 'Capitalism is the best because it makes me feel safe, and I can buy things.',
         pollId: newPoll4.id,
-        userId: student1.id,
+        userId: user1.id,
         feeling: 'safe',
         sentiment: 'positive',
         method: 'buying',
@@ -92,7 +106,7 @@ const newResponse1 = await prisma.pollResponse.create({
   data: {
       response: 'Capitalism is the best because it makes me feel safe, and I can buy things.',
       pollId: newPoll4.id,
-      userId: student2.id,
+      userId: user2.id,
       feeling: 'safe',
       sentiment: 'positive',
       method: 'buying',
@@ -104,7 +118,7 @@ const newResponse2 = await prisma.pollResponse.create({
   data: {
       response: 'Oiligarchies are the best because it makes they feel rich, and I can buy assert influence.',
       pollId: newPoll4.id,
-      userId: student2.id,
+      userId: user2.id,
       feeling: 'safe',
       sentiment: 'positive',
       method: 'buying',
@@ -116,7 +130,7 @@ const newResponse3 = await prisma.pollResponse.create({
   data: {
       response: 'Socialism is the best because it makes me feel community, and I love people.',
       pollId: newPoll4.id,
-      userId: student1.id,
+      userId: user1.id,
       feeling: 'safe',
       sentiment: 'positive',
       method: 'buying',

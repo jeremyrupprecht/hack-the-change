@@ -1,6 +1,20 @@
+import { useContext, useMemo } from "react";
 import styled from "styled-components";
+import { UserContext } from "../contexts/UserProvider";
 import CourseList from "./CourseList";
-export default function  TeacherDashboard() {
+import StudentCourseList from "./StudentCourseList";
+
+export default function  Dashboard() {
+  const { user, setUser } = useContext(UserContext)
+
+  courseList = useMemo(() => {
+    if (user?.role === "TEACHER") {
+      return <CourseList />
+    } else if (user?.role === "STUDENT") {
+      return <StudentCourseList />
+    }
+  })
+
   return (
     <Div>
       <CourseList />

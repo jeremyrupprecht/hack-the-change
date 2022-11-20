@@ -11,6 +11,27 @@ courseRouter.use((req: Request, res: Response, next: () => void) => {
   next()
 })
 
+// Get all courses for a particular student
+courseRouter.get("/:userId/courses", async(req: Request, res: Response) => {
+  try {
+    const courses = await prisma.student.findMany({
+      where: {
+        userId: req.params.userId,
+      },
+      include: {
+        course: true,
+      }
+    })
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: error
+    });
+  }
+})
+
+
+
 // create a new course
 courseRouter.post('/', async (req: Request, res: Response) => {
   try {

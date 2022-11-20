@@ -6,7 +6,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import { Register } from "./components/Register";
-import TeacherDashboard from "./components/TeacherDashboard";
+import Dashboard from "./components/Dashboard";
 import PollResponseForm from "./components/PollResponseForm";
 import { PollResponsePage } from "./components/PollResponsePage";
 import { CreateCoursePage } from "./components/CreateCoursePage";
@@ -17,10 +17,10 @@ export default function RouteIndex(): JSX.Element {
 
   return (
     <Routes>
-      <Route path="/login" element={true ? <Login /> : <TeacherDashboard />}  />
+      <Route path="/login" element={true ? <Login /> : <Dashboard />}  />
       <Route path="/register" element={<Register />} />
       <Route path="/pollform/:pollId" element={<PollResponseForm />} />
-      <Route path="/dashboard" element={<TeacherDashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/polls/:pollId" element={<PollResponsePage />} />
       <Route path="/course/create" element={<CreateCoursePage />} />
       <Route path="/poll/create/:courseId" element={<PollCreatePage />} />
