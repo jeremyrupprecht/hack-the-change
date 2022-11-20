@@ -6,6 +6,7 @@ const Login = lazy(() => import("@/components/Login"));
 const Notfound = lazy(() => import("@/routes/404"));
 const Register = lazy(() => import("@/components/Register"));
 const TeacherDashboard = lazy(() => import ("@/components/TeacherDashboard"));
+const PollResponseForm = lazy(() => import ("@/components/PollResponseForm"));
 
 export const routes: Array<RouteObject> = [
   {
@@ -45,6 +46,14 @@ export const routes: Array<RouteObject> = [
     element: (          // TODO: add conditionals to route to appropriate dashboards
       <Suspense>
         <TeacherDashboard />
+      </Suspense>
+    )
+  },
+  {
+    path: "/pollform", // change later
+    element: (
+      <Suspense>
+        <PollResponseForm />
       </Suspense>
     )
   }
