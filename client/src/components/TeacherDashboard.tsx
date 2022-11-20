@@ -7,13 +7,10 @@ export default function TeacherDashboard() {
   return (
     <Div>
       <CourseList />
-      <PollList />
     </Div>
   )
 }
 
 const Div = styled.div`
   margin: 15px;
-  display: flex;
-  flex-direction: row;
 `;
