@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function PollResponseForm() {
   const [studentAnswer, setStudentAnswer] = useState("");
@@ -10,6 +11,14 @@ function PollResponseForm() {
     console.log("Student Answer Recorded: ", studentAnswer);
 
     // Need an axios post here to FastAPI
+    axios.post(`http://localhost:8000/userId_TEMP/polls/pollId_TEMP`, {
+      pollId: "pollId_TEMP", // pull from context?
+      userId: "userId_TEMP", // ^^
+      response: studentAnswer
+    })
+    .then((res) => {
+      console.log(res);
+    })
   }
 
   return (
