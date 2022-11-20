@@ -1,5 +1,6 @@
 import { Response, Request } from "express"
 import { PrismaClient } from '@prisma/client'
+import { authenticateToken } from ".."
 
 const express = require('express')
 const userRouter = express.Router()
@@ -12,7 +13,7 @@ userRouter.use((req: Request, res: Response, next: () => void) => {
 })
 
 // get users
-userRouter.get('/', async (req: Request, res: Response) => {
+userRouter.get('/', authenticateToken, async (req: Request, res: Response) => {
   try {
       const allUsers = await prisma.user.findMany();
       return res.json({
