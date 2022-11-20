@@ -54,25 +54,26 @@ pollRouter.get('/:courseId', async (req: Request, res: Response) => {
   }
   })
 
-module.exports = pollRouter
-
-// get all responses for a given poll
-pollRouter.get('/:pollId/responses', async (req: Request, res: Response) => {
-    try {
-        const {pollId} = req.params;
-        const pollResponses = await prisma.pollResponse.findMany({
-            where: {         
-                pollId,
-            }
-        });
-        return res.json({
-            success: true,
-            data: pollResponses
-        });
-    } catch (error) {
-        return res.json({
-            success: false,
-            message: error
-        });
-    }
-})
+  
+  // get all responses for a given poll
+  pollRouter.get('/:pollId/responses', async (req: Request, res: Response) => {
+      try {
+          const {pollId} = req.params;
+          const pollResponses = await prisma.pollResponse.findMany({
+              where: {         
+                  pollId,
+                }
+            });
+            return res.json({
+                success: true,
+                data: pollResponses
+            });
+        } catch (error) {
+            return res.json({
+                success: false,
+                message: error
+            });
+        }
+    })
+    
+    module.exports = pollRouter
