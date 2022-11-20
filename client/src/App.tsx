@@ -1,22 +1,18 @@
-import { Fragment } from "react";
-import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+
+import { Outlet, ScrollRestoration, useLocation, BrowserRouter } from "react-router-dom";
 import useDebugRender from "tilg";
 import GlobalStyles from "./styles/global";
 import NavBar from "./components/layout/NavBar";
+import RouteIndex from "./routes";
 
 export default function App() {
   useDebugRender();
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  const loadNav = (pathname.includes("login") || pathname.includes("register")) ? "" : <NavBar />;
-
   return (
-      <Fragment>
-        <GlobalStyles />
-        { loadNav }
+      <BrowserRouter>
+      <GlobalStyles />
+        <NavBar />
+        <RouteIndex />
         <Outlet />
-        <ScrollRestoration />
-      </Fragment>
+      </BrowserRouter>
   );
 }

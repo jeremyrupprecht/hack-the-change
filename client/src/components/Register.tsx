@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 
-export default function Register() {
-  function onClick() {
-
+export function Register(): JSX.Element {
+  async function onClick(formData: any) {
+    console.log(formData)
   }
   return (
     <Div>
