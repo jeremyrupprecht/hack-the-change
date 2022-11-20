@@ -37,8 +37,8 @@ const auth = require('./routes/auth');
 app.use('/api/auth', auth)
 
 // User Routes
-const users = require('./routes/user');
-app.use('/api/user', users)
+const users = require('./routes/users');
+app.use('/api/users', users)
 
 // Course Routes
 const courses = require('./routes/course');
@@ -46,10 +46,10 @@ app.use('/api/course', courses)
 
 // Response Routes
 const responses = require('./routes/response');
-app.use('/api/response', responses);
+app.use('/api/responses', responses);
 
 // Student Routes
-const students = require('./routes/student');
+const students = require('./routes/students');
 app.use('/api/student', students);
 
 // Poll Routes

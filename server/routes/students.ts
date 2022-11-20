@@ -42,3 +42,5 @@ studentRouter.post('/', async (req: Request, res: Response) => {
     });
 }
 })
+
+module.exports = studentRouter
