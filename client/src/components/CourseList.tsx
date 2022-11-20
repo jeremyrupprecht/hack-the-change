@@ -3,6 +3,7 @@ import { theme } from "@/styles/theme";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import PollList from "./PollList";
 
 export default function CourseList() {
   const mockCourses = [ "Science", "English"];
@@ -30,7 +31,7 @@ export default function CourseList() {
           <FontAwesomeIcon className="icon" icon={faCirclePlus} />
         </div>
       </Div>
-      <h1>MindFULL+</h1>
+      { activeCourse === null ? <h1>MindFULL+</h1> : <PollList />}
     </UpperDiv>
   )
 }
@@ -54,7 +55,7 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   .course {
     width: 100%;
