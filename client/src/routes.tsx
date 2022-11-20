@@ -19,7 +19,7 @@ export default function RouteIndex(): JSX.Element {
     <Routes>
       <Route path="/login" element={true ? <Login /> : <Dashboard />}  />
       <Route path="/register" element={<Register />} />
-      <Route path="/pollform/:pollId" element={<PollResponseForm />} />
+      {/* <Route path="/pollform/:pollId" element={<PollResponseForm />} /> */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/polls/:pollId" element={<PollResponsePage />} />
       <Route path="/course/create" element={<CreateCoursePage />} />
