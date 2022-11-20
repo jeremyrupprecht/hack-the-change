@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client'
 import { Response, Request } from "express"
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = 'secret';
 const express = require('express')
 const authRouter = express.Router()
 const prisma = new PrismaClient()
@@ -19,7 +18,7 @@ authRouter.post("/login", async (req: Request, res: Response) => {
 
   if (user?.password === password) {
     return res.json({
-      token: jwt.sign({ user: "admin" }, JWT_SECRET),
+      token: jwt.sign({ user: "admin" }, 'secret'),
     });
   }
 

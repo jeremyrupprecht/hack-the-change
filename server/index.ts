@@ -22,6 +22,10 @@ export function authenticateToken(req: Request & {user: User}, res: Response, ne
   })
 }
 
+const cors = require('cors');
+
+app.use(cors({origin: true , credentials: true}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

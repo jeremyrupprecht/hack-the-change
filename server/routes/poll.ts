@@ -33,4 +33,25 @@ pollRouter.post('/', async (req: Request, res: Response) => {
 }
 })
 
+// get all polls for a given course
+pollRouter.post('/:courseId', async (req: Request, res: Response) => {
+    try {
+      const {courseId} = req.params;
+      const newPoll = await prisma.poll.findMany({
+          where: {         
+              courseId,
+          }
+      });
+      return res.json({
+          success: true,
+          data: newPoll
+      });
+  } catch (error) {
+      return res.json({
+          success: false,
+          message: error
+      });
+  }
+  })
+
 module.exports = pollRouter

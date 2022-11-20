@@ -17,8 +17,7 @@ export default function RouteIndex(): JSX.Element {
       <Route path="/login" element={true ? <Login /> : <TeacherDashboard />}  />
       <Route path="/register" element={<Register />} />
       <Route path="/pollform/:pollId" element={<PollResponseForm />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<TeacherDashboard />} />
       <Route path="*" element={<Notfound  />}/>
     </Routes>
   );
