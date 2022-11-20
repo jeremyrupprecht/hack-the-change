@@ -48,6 +48,14 @@ app.get("/", (_req, res: Response) => {
 const responses = require('./routes/response');
 app.use('/api/responses', responses);
 
+// Student Routes
+const students = require('./routes/students');
+app.use('/api/students', students);
+
+// Poll Routes
+const polls = require('./routes/Polls');
+app.use('/api/polls', polls);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
