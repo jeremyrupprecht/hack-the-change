@@ -18,6 +18,8 @@ authRouter.post("/login", async (req: Request, res: Response) => {
 
   if (user?.password === password) {
     return res.json({
+      success: true,
+      data: user,
       token: jwt.sign({ user: "admin" }, 'secret'),
     });
   }

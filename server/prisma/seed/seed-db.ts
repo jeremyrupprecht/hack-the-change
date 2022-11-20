@@ -76,20 +76,51 @@ const newPoll4 = await prisma.poll.create({
     }
   });
 
-  // await prisma.users.upsert({
-  //   where: { email: 'vlad@polyfill.cc' },
-  //   update: {
-  //     first_name: 'Vlad',
-  //     last_name: 'Vekslyer',
-  //     password: PASSWORD,
-  //     role: 'USER'
-  //   },
-  //   create: {
-  //     email: 'vlad@polyfill.cc',
-  //     first_name: 'Vlad',
-  //     last_name: 'Vekslyer',
-  //     password: PASSWORD,
-  //     role: 'USER'
-  //   }
-  // });
+  const newResponse = await prisma.pollResponse.create({
+    data: {
+        response: 'Capitalism is the best because it makes me feel safe, and I can buy things.',
+        pollId: newPoll4.id,
+        userId: student1.id,
+        feeling: 'safe',
+        sentiment: 'positive',
+        method: 'buying',
+        reason: 'I can buy'
+    }
+});
+
+const newResponse1 = await prisma.pollResponse.create({
+  data: {
+      response: 'Capitalism is the best because it makes me feel safe, and I can buy things.',
+      pollId: newPoll4.id,
+      userId: student2.id,
+      feeling: 'safe',
+      sentiment: 'positive',
+      method: 'buying',
+      reason: 'I can buy'
+  }
+});
+
+const newResponse2 = await prisma.pollResponse.create({
+  data: {
+      response: 'Oiligarchies are the best because it makes they feel rich, and I can buy assert influence.',
+      pollId: newPoll4.id,
+      userId: student2.id,
+      feeling: 'safe',
+      sentiment: 'positive',
+      method: 'buying',
+      reason: 'I can buy'
+  }
+});
+
+const newResponse3 = await prisma.pollResponse.create({
+  data: {
+      response: 'Socialism is the best because it makes me feel community, and I love people.',
+      pollId: newPoll4.id,
+      userId: student1.id,
+      feeling: 'safe',
+      sentiment: 'positive',
+      method: 'buying',
+      reason: 'I can buy'
+  }
+});
 }

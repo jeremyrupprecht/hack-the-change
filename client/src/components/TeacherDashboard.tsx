@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CourseList from "./CourseList";
-export default function TeacherDashboard() {
+export default function  TeacherDashboard() {
   return (
     <Div>
       <CourseList />

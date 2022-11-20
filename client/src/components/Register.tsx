@@ -32,6 +32,8 @@ export function Register(): JSX.Element {
       email: res.data.email,
     });
 
+    console.log(user)
+
     navigate('/dashboard');
   }
 

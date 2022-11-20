@@ -5,42 +5,40 @@ import axios from "axios";
 import { UserContext } from "../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 
-export function Login() {
+export function CreateCoursePage() {
   const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [code, setCode] = useState("");
+
   async function onClick(e: FormEvent) {
     e.preventDefault();
-    const res = await axios.post("http://localhost:3000/api/auth/login", {
-      email,
-      password,
+    await axios.post("http://localhost:3000/api/course/", {
+      name,
+      code,
+      userId: user?.id,
+      description
     })
-    if (setUser === undefined) return;
-
-    setUser({
-      name: res.data.data.name,
-      role: res.data.data.role,
-      id: res.data.data.id,
-      email: res.data.data.email,
-    });
 
     navigate('/dashboard');
   }
 
   return (
     <Div>
-      <h1>Login</h1>
+      <h1>Create New Course</h1>
       <form onSubmit={onClick}>
-      <label>Email:</label>
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+      <label>Name:</label>
+        <input type="name" value={name} onChange={e => setName(e.target.value)} required />
 
-        <label>Password:</label>
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+        <label>Description:</label>
+        <input type="description" value={description} onChange={e => setDescription(e.target.value)} required />
 
-        <div className="reroute">Not a MindFULL+ user yet? Click <a href="http://localhost:3030/register">here</a> to register.</div>
-        <button type="submit">Login</button>
+        <label>Code to Enter Class:</label>
+        <input type="code" value={code} onChange={e => setCode(e.target.value)} required />
+
+        <button type="submit">Submit</button>
       </form>
     </Div>
   )
