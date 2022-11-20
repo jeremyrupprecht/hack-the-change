@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import Course from "./Course";
+import CourseList from "./CourseList";
 import { theme } from "@/styles/theme";
 
 export default function TeacherDashboard() {
   return (
     <Div>
-      <h1>This is the teacher dashboard</h1>
+      <CourseList />
     </Div>
   )
 }
 
 const Div = styled.div`
-  
+  margin: 15px;
 `;
