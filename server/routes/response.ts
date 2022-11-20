@@ -24,25 +24,8 @@ responseRouter.post('/', async (req: Request, res: Response) => {
       console.log("Req.body: ", req.body);
       console.log("Typeof: ", typeof req.body);
       const { pollId, userId, response, description } = req.body;
-      // description must be parsed
-      console.log("description: ", description);
       
-
       const { feeling, sentiment, method, reason } = description;
-      // model PollResponse {
-      //   id        String   @id @default(uuid())
-      //   response  String
-      //   feeling   String
-      //   sentiment String
-      //   method    String
-      //   reason    String
-      //   poll      Poll     @relation(fields: [pollId], references: [id])
-      //   pollId    String
-      //   user      User     @relation(fields: [userId], references: [id])
-      //   userId    String
-      //   createdAt DateTime @default(now())
-      //   updatedAt DateTime @updatedAt
-      // }
       
       const newResponse = await prisma.pollResponse.create({
           data: {

@@ -22,10 +22,19 @@ export function authenticateToken(req: Request & {user: User}, res: Response, ne
   })
 }
 
+const cors = require('cors');
+
+app.use(cors({origin: true , credentials: true}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const port: number = 3000;
+
+// testing route
+app.get("/", (_req, res: Response) => {
+  res.send(`Server is running on port: ${port}`);
+});
 
 // Auth Routes
 const auth = require('./routes/auth');
@@ -36,13 +45,8 @@ const users = require('./routes/users');
 app.use('/api/users', users)
 
 // Course Routes
-const courses = require('./routes/courses');
-app.use('/api/courses', courses)
-
-// testing route
-app.get("/", (_req, res: Response) => {
-  res.send(`Server is running on port: ${port}`);
-});
+const courses = require('./routes/course');
+app.use('/api/course', courses)
 
 // Response Routes
 const responses = require('./routes/response');
@@ -50,10 +54,10 @@ app.use('/api/responses', responses);
 
 // Student Routes
 const students = require('./routes/students');
-app.use('/api/students', students);
+app.use('/api/student', students);
 
 // Poll Routes
-const polls = require('./routes/Polls');
+const polls = require('./routes/poll');
 app.use('/api/polls', polls);
 
 app.listen(port, () => {

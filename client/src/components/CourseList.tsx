@@ -2,25 +2,51 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import PollList from "./PollList";
+import axios from "axios";
+import { UserContext } from "../contexts/UserProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function CourseList() {
-  const mockCourses = [ "Science", "English"];
+  const { user, setUser } = useContext(UserContext)
+
+  const [loading, setLoading] = useState(true);
   const [ activeCourse, setActiveCourse ] = useState< number | null >(null);
+  const [ courseId, setCourseId ] = useState< string | null >(null);
 
-  const courseList = mockCourses.map(( name, index ) => {
-    const selected = activeCourse === index ? "selected" : "";
-    return (
-      <div className={`course ${selected}`} key={index} onClick={() => setActiveCourse(index)}>
-        <h2>{name}</h2>
-        <div className="horizontal-line"></div>
-      </div>
-    )
-  });
+  const [courses, setCourses] = useState([]);
 
+  async function fetchCourses() {
+    console.log(user)
+    if (!user) return;
+    const foundCourses = await axios.get(`http://localhost:3000/api/course/${user.id}`);
+    console.log(foundCourses.data.data, user.id)
+    setCourses(foundCourses.data.data);
+    setLoading(false);
+  }
+
+  useMemo(() => {
+  fetchCourses();
+  }, [])
+
+  const courseList = useMemo(() => {
+    return courses.map(( course: any, index ) => {
+      const selected = activeCourse === index ? "selected" : "";
+      return (
+        <div className={`course ${selected}`} key={index} onClick={() => {
+          setActiveCourse(index)
+          setCourseId(course.id)
+        }}>
+          <h2>{course.name}</h2>
+          <div className="horizontal-line"></div>
+        </div>
+      )
+    });
+  }, [courses])
+  const navigate = useNavigate();
   function onClick() {
-
+    navigate("/course/create");
   }
 
   return (
@@ -31,7 +57,7 @@ export default function CourseList() {
           <FontAwesomeIcon className="icon" icon={faCirclePlus} />
         </div>
       </Div>
-      { activeCourse === null ? <h1>MindFULL+</h1> : <PollList />}
+      { activeCourse === null ? <h1>MindFULL+</h1> : <PollList courseId={courseId}/>}
     </UpperDiv>
   )
 }

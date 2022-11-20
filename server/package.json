@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "seed": "ts-node ./prisma/seed.ts",
+    "reset": "npx prisma migrate reset --preview-feature"
   },
   "author": "",
   "license": "ISC",

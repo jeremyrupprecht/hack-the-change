@@ -1,6 +1,6 @@
 import { Response, Request } from "express"
 import { PrismaClient } from '@prisma/client'
-import { authenticateToken } from ".."
+const jwt = require("jsonwebtoken");
 
 const express = require('express')
 const userRouter = express.Router()
@@ -13,7 +13,7 @@ userRouter.use((req: Request, res: Response, next: () => void) => {
 })
 
 // get users
-userRouter.get('/', authenticateToken, async (req: Request, res: Response) => {
+userRouter.get('/', async (req: Request, res: Response) => {
   try {
       const allUsers = await prisma.user.findMany();
       return res.json({
@@ -42,7 +42,8 @@ userRouter.post('/', async (req: Request, res: Response) => {
       });
       return res.json({
           success: true,
-          data: newUser
+          data: newUser,
+          token: jwt.sign({ user: "admin" }, 'secret'),
       });
   } catch (error) {
       return res.json({

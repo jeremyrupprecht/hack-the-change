@@ -1,22 +1,26 @@
-import { Fragment } from "react";
-import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+
+import { Outlet, BrowserRouter } from "react-router-dom";
 import useDebugRender from "tilg";
 import GlobalStyles from "./styles/global";
 import NavBar from "./components/layout/NavBar";
+import RouteIndex from "./routes";
+import { UserContext } from "./contexts/UserProvider";
+import { useState } from "react";
+import { IUser } from "./contexts/user/UserContext";
 
 export default function App() {
+  const [user, setUser] = useState(undefined as IUser | undefined,);
   useDebugRender();
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  const loadNav = (pathname.includes("login") || pathname.includes("register")) ? "" : <NavBar />;
-
   return (
-      <Fragment>
-        <GlobalStyles />
-        { loadNav }
+    <UserContext.Provider value={
+      {user, setUser}
+    }>
+      <BrowserRouter>
+      <GlobalStyles />
+        <NavBar />
+        <RouteIndex />
         <Outlet />
-        <ScrollRestoration />
-      </Fragment>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }

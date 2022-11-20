@@ -36,12 +36,15 @@ courseRouter.post('/', async (req: Request, res: Response) => {
 })
 // get all courses for a given teacher
 courseRouter.get('/:teacherId', async (req: Request<{ teacherId: string}>, res: Response) => {
+  console.log(req.params.teacherId)
+
   if (!req.params) return;
   const allUsers = await prisma.course.findMany({
     where: {
       userId: req.params.teacherId
     }
   });
+  console.log(allUsers, req.params.teacherId)
   return res.json({
       success: true,
       data: allUsers  
