@@ -1,14 +1,20 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import Course from "./Course";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 export default function CourseList() {
   const mockCourses = [ "Science", "English"];
-  const courseList = mockCourses.map( (name) => {
+  const [ activeCourse, setActiveCourse ] = useState< number | null >(null);
+
+  const courseList = mockCourses.map(( name, index ) => {
+    const selected = activeCourse === index ? "selected" : "";
     return (
-      <Course name={name} />
+      <div className={`course ${selected}`} key={index} onClick={() => setActiveCourse(index)}>
+        <h2>{name}</h2>
+        <div className="horizontal-line"></div>
+      </div>
     )
   });
 
@@ -18,9 +24,7 @@ export default function CourseList() {
 
   return (
     <Div>
-      <div className="course-list">
-        { courseList }
-      </div>
+      { courseList }
       <div className="add-course" onClick={onClick}>
         <FontAwesomeIcon className="icon" icon={faCirclePlus} />
       </div>
@@ -35,13 +39,53 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10px;
+  justify-content: center;
+
+  .course {
+    width: 100%;
+    background-color: ${theme.bluewood};
+    border-radius: 10px;
+
+    h2 {
+      color: ${theme.white};
+      letter-spacing: 1px;
+      padding: 0px 20px;
+      line-height: 36px;
+    }
+
+    .horizontal-line {
+      width: 230px;
+      border-bottom: 1px solid ${theme.white};
+      margin-left: 10px;
+    }
+  }
+
+  .course:hover {
+    cursor: pointer;
+  }
+
+  .course.selected {
+    background-color: ${theme.white};
+    border-radius: 10px 0 0 10px;
+
+    h2 {
+      color: ${theme.bluewood};
+    }
+
+    .horizontal-line {
+      display: none;
+    }
+  }
 
   .add-course {
     height: 60px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background-color: ${theme.bluewood};
+    border-radius: 10px;
 
     .icon {
       color: ${theme.white};
