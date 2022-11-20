@@ -18,6 +18,14 @@ export default function Register() {
         <label>Confirm Password:</label>
         <input type="password" required />
 
+        <label>Select Role:</label>
+        <select required>
+          <option className="default-select" value="" disabled selected>Please select a role</option>
+          <option value="teacher">Teacher</option>
+          <option value="parent">Parent</option>
+          <option value="student">Student</option>
+        </select>
+
         <button>Create Account</button>
       </form>
     </Div>
@@ -29,7 +37,6 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 100vh;
   margin-top: 80px;
 
   h1 {
@@ -61,6 +68,14 @@ const Div = styled.div`
       border-bottom: 1px solid ${theme.mediumGray};
       color: ${theme.darkGray};
       background-color: ${theme.background};
+    }
+
+    select {
+      width: 150px;
+      height: 24px;
+      border: none;
+      border-radius: 2px;
+      background-color: inherit;
     }
 
     button {
