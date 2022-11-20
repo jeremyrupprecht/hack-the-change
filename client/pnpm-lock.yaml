@@ -6,7 +6,7 @@ specifiers:
   '@fortawesome/react-fontawesome': ^0.2.0
   '@types/lodash': 4.14.184
   '@types/react': 18.0.25
-  '@types/react-dom': 18.0.8
+  '@types/react-dom': 18.0.9
   '@types/react-router': 5.1.18
   '@types/styled-components': 5.1.26
   '@typescript-eslint/eslint-plugin': 5.42.1
@@ -53,8 +53,6 @@ dependencies:
   '@fortawesome/free-solid-svg-icons': 6.2.1
   '@fortawesome/react-fontawesome': 0.2.0_z27bm67dtmuyyvss23ckjdrcuy
   '@types/lodash': 4.14.184
-  '@types/react': 18.0.25
-  '@types/react-dom': 18.0.8
   '@types/react-router': 5.1.18
   '@types/styled-components': 5.1.26
   '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
@@ -73,7 +71,7 @@ dependencies:
   lodash: 4.17.21
   prettier: 2.7.1
   prettier-plugin-packagejson: 2.3.0_prettier@2.7.1
-  rc-basic: 1.0.2_fznjpbkj3zajorwin3iyiaqlly
+  rc-basic: 1.0.2_ob5niuxu3motsapva6h65mxvym
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-json-view: 1.21.3_2zx2umvpluuhvlq44va5bta2da
@@ -95,6 +93,10 @@ dependencies:
   vite-plugin-env-compatible: 1.1.1
   vite-plugin-svgr: 2.2.1_vite@3.0.9
   vite-tsconfig-paths: 3.5.0_vite@3.0.9
+
+devDependencies:
+  '@types/react': 18.0.25
+  '@types/react-dom': 18.0.9
 
 packages:
 
@@ -766,13 +768,11 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
-    dev: false
 
-  /@types/react-dom/18.0.8:
-    resolution: {integrity: sha512-C3GYO0HLaOkk9dDAz3Dl4sbe4AKUGTCfFIZsz3n/82dPNN8Du533HzKatDxeUYWu24wJgMP1xICqkWk1YOLOIw==}
+  /@types/react-dom/18.0.9:
+    resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.25
-    dev: false
 
   /@types/react-router/5.1.18:
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
@@ -787,11 +787,9 @@ packages:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
       csstype: 3.0.8
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
 
   /@types/semver/7.3.12:
     resolution: {integrity: sha512-WwA1MW0++RfXmCr12xeYOOC5baSC9mSb0ZqCquFzKhcoF4TvHu5MKOuXsncgZcpVFhB1pXd5hZmM0ryAoCp12A==}
@@ -1370,7 +1368,6 @@ packages:
 
   /csstype/3.0.8:
     resolution: {integrity: sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==}
-    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -3106,7 +3103,7 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /rc-basic/1.0.2_fznjpbkj3zajorwin3iyiaqlly:
+  /rc-basic/1.0.2_ob5niuxu3motsapva6h65mxvym:
     resolution: {integrity: sha512-0ZYWIT1/xInHSzEazlhM713VRFxRmnRzBNQ6XsBDWJ+IbWVBCncUwNcT9pO+U2q6UNxjHcaeXN3ghwKxdNSwIw==}
     requiresBuild: true
     peerDependencies:
@@ -3124,7 +3121,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.0.25
-      '@types/react-dom': 18.0.8
+      '@types/react-dom': 18.0.9
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-polymorphic-types: 2.0.0_@types+react@18.0.25
