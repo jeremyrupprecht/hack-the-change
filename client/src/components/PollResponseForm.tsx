@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 // Styled Components
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
+import { UserContext } from "@/contexts/UserProvider";
 
-function PollResponseForm(pollId: string) {
+function PollResponseForm({pollId, question}: {pollId: string, question: string}) {
   const [studentAnswer, setStudentAnswer] = useState("");
+  const { user, setUser } = useContext(UserContext)
 
 
   const handleSubmit = (e: any) => {
@@ -14,20 +16,21 @@ function PollResponseForm(pollId: string) {
     console.log("Student Answer Recorded: ", studentAnswer);
 
     // Need an axios post here to FastAPI
-    axios.post(`http://localhost:8000/userId_TEMP/polls/pollId_TEMP`, {
-      pollId: "pollId_TEMP", // pull from context?
-      userId: "userId_TEMP", // ^^
+    axios.post(`http://localhost:8000/${user.id}/polls/${pollId}`, {
+      pollId: pollId,
+      userId: user?.id,
       response: studentAnswer
     })
     .then((res) => {
       console.log(res);
+      return;
     })
   }
 
   return (
     <Div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>Title prop goes here</h1>
+        <h1>{question}</h1>
         <label>How do you feel about this?</label>
         <input
           type="text"
