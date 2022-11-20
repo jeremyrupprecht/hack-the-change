@@ -47,7 +47,6 @@ const Nav = styled.div`
       align-items: center;
 
       .icon {
-        /* background-color: ${theme.bluewood}; */
         color: ${theme.bluewood};
         width: 24px;
         height: 28px;

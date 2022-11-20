@@ -5,6 +5,7 @@ const Index = lazy(() => import("@/routes/index"));
 const Login = lazy(() => import("@/components/Login"));
 const Notfound = lazy(() => import("@/routes/404"));
 const Register = lazy(() => import("@/components/Register"));
+const TeacherDashboard = lazy(() => import ("@/components/TeacherDashboard"));
 
 export const routes: Array<RouteObject> = [
   {
@@ -36,6 +37,14 @@ export const routes: Array<RouteObject> = [
     element: (
       <Suspense>
         <Register />
+      </Suspense>
+    )
+  },
+  {
+    path: "/dashboard", // all dashboards route to here
+    element: (          // TODO: add conditionals to route to appropriate dashboards
+      <Suspense>
+        <TeacherDashboard />
       </Suspense>
     )
   }
