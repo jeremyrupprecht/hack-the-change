@@ -16,6 +16,8 @@ export default function Login() {
         <label>Password:</label>
         <input type='password' required />
 
+        <div className="reroute">Not a MindFULL+ user yet? Click <a href="http://localhost:3030/register">here</a> to register.</div>
+
         <button>Login</button>
       </form>
     </Div>
@@ -55,6 +57,11 @@ const Div = styled.div`
       border-bottom: 1px solid ${theme.mediumGray};
       color: ${theme.darkGray};
       background-color: ${theme.background};
+    }
+
+    .reroute {
+      margin-top: 20px;
+      font-size: 14px;
     }
 
     button {
