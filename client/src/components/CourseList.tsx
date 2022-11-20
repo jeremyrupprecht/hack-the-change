@@ -23,14 +23,29 @@ export default function CourseList() {
   }
 
   return (
-    <Div>
-      { courseList }
-      <div className="add-course" onClick={onClick}>
-        <FontAwesomeIcon className="icon" icon={faCirclePlus} />
-      </div>
-    </Div>
+    <UpperDiv>
+      <Div>
+        { courseList }
+        <div className="add-course" onClick={onClick}>
+          <FontAwesomeIcon className="icon" icon={faCirclePlus} />
+        </div>
+      </Div>
+      <h1>MindFULL+</h1>
+    </UpperDiv>
   )
 }
+
+const UpperDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    color: ${theme.bluewood};
+    font-weight: 900;
+    margin-right: 35vw;
+    margin-top: 30px;
+  }
+`;
 
 const Div = styled.div`
   width: 250px;
