@@ -21,14 +21,16 @@ export default function StudentCourseList() {
     console.log(user)
     if (!user) return;
     const foundCourses = await axios.get(`http://localhost:3000/api/course/${user.id}/courses`);
-    console.log(foundCourses.data.data, user.id)
-    // setCourses(foundCourses.data.data);
-    // setLoading(false);
+    console.log("COMING BACK FROM AXIOS FOR COURSES", foundCourses.data.data, user.id)
+    setCourses(foundCourses.data.data);
+    console.log("Courses of student: ", courses);
+
+    setLoading(false);
   }
 
   useMemo(() => {
   fetchCourses();
-  }, [])
+  }, [user])
 
   const courseList = useMemo(() => {
     return courses.map(( course: any, index ) => {
