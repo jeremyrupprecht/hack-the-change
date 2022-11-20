@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import {
   h1, h2, h3, h4, h5, h6
 } from './global/index';
+import { label } from './global/index';
 import { theme } from 'src/styles/theme';
 
 const GlobalStyles = createGlobalStyle`
@@ -38,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
 
   h6 {
     ${h6}
+  }
+
+  label {
+    ${label}
   }
 `;
 
