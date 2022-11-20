@@ -21,6 +21,9 @@ export function PollResponsePage() {
     navigate('/dashboard');
   }
 
+  console.log("Teachers response page: ", pollResponses);
+
+
   const pollResponseList = pollResponses.map((response: any) => {
     return(
       <div key={response.id}>
