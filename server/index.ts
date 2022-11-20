@@ -27,33 +27,33 @@ app.use(express.urlencoded({ extended: true }));
 
 const port: number = 3000;
 
-// Auth Routes
-const auth = require('./routes/auth');
-app.use('/api/auth', auth)
-
-// User Routes
-const users = require('./routes/users');
-app.use('/api/users', users)
-
-// Course Routes
-const courses = require('./routes/courses');
-app.use('/api/courses', courses)
-
 // testing route
 app.get("/", (_req, res: Response) => {
   res.send(`Server is running on port: ${port}`);
 });
 
+// Auth Routes
+const auth = require('./routes/auth');
+app.use('/api/auth', auth)
+
+// User Routes
+const users = require('./routes/user');
+app.use('/api/user', users)
+
+// Course Routes
+const courses = require('./routes/course');
+app.use('/api/course', courses)
+
 // Response Routes
 const responses = require('./routes/response');
-app.use('/api/responses', responses);
+app.use('/api/response', responses);
 
 // Student Routes
-const students = require('./routes/students');
-app.use('/api/students', students);
+const students = require('./routes/student');
+app.use('/api/student', students);
 
 // Poll Routes
-const polls = require('./routes/Polls');
+const polls = require('./routes/poll');
 app.use('/api/polls', polls);
 
 app.listen(port, () => {

@@ -15,7 +15,7 @@ pollRouter.use((req: Request, res: Response, next: () => void) => {
 pollRouter.post('/', async (req: Request, res: Response) => {
   try {
     const { question, courseId } = req.body;
-    const newPoll = await prisma.course.create({
+    const newPoll = await prisma.poll.create({
         data: {         
             question,
             courseId,

@@ -13,7 +13,7 @@ userRouter.use((req: Request, res: Response, next: () => void) => {
 })
 
 // get users
-userRouter.get('/', authenticateToken, async (req: Request, res: Response) => {
+userRouter.get('/', async (req: Request, res: Response) => {
   try {
       const allUsers = await prisma.user.findMany();
       return res.json({

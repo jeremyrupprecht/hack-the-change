@@ -25,7 +25,7 @@ studentRouter.use((req: Request, res: Response, next: () => void) => {
 studentRouter.post('/', async (req: Request, res: Response) => {
   try {
     const { courseId, userId } = req.body;
-    const newStudent = await prisma.course.create({
+    const newStudent = await prisma.student.create({
         data: {         
             userId,
             courseId,
