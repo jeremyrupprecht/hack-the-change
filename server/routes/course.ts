@@ -22,6 +22,10 @@ courseRouter.get("/:userId/courses", async(req: Request, res: Response) => {
         course: true,
       }
     })
+    return res.json({
+      data: courses,
+      success: true
+    })
   } catch (error) {
     return res.json({
       success: false,

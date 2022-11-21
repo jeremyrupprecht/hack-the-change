@@ -3,10 +3,10 @@ import { theme } from "@/styles/theme";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useMemo, useState } from "react";
-import PollList from "./PollList";
 import axios from "axios";
 import { UserContext } from "../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
+import StudentPollList from "./StudentPollList";
 
 export default function StudentCourseList() {
   const { user, setUser } = useContext(UserContext)
@@ -21,9 +21,18 @@ export default function StudentCourseList() {
     console.log(user)
     if (!user) return;
     const foundCourses = await axios.get(`http://localhost:3000/api/course/${user.id}/courses`);
-    console.log(foundCourses.data.data, user.id)
-    // setCourses(foundCourses.data.data);
-    // setLoading(false);
+    console.log("COMING BACK FROM AXIOS FOR COURSES", foundCourses.data.data, user.id)
+    console.log("foundCourses.data.data: ", foundCourses.data.data);
+    console.log("foundCourses.data.data[0]: ", foundCourses.data.data[0]);
+    const a = foundCourses.data.data.map((data: {course: any}) => data.course);
+    // console.log("foundCourses.data.data[0].course: ", foundCourses.data.data[0].course);
+    console.log("a: ", a);
+
+
+    setCourses(a);
+    // console.log("Courses of student: ", courses);
+
+    setLoading(false);
   }
 
   useMemo(() => {
@@ -57,7 +66,7 @@ export default function StudentCourseList() {
           <FontAwesomeIcon className="icon" icon={faCirclePlus} />
         </div>
       </Div>
-      { activeCourse === null ? <h1>MindFULL+</h1> : <PollList courseId={courseId}/>}
+      { activeCourse === null ? <h1>MindFULL+</h1> : <StudentPollList courseId={courseId}/>}
     </UpperDiv>
   )
 }

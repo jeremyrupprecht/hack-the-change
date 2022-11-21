@@ -7,17 +7,13 @@ import StudentCourseList from "./StudentCourseList";
 export default function  Dashboard() {
   const { user, setUser } = useContext(UserContext)
 
-  courseList = useMemo(() => {
-    if (user?.role === "TEACHER") {
-      return <CourseList />
-    } else if (user?.role === "STUDENT") {
-      return <StudentCourseList />
-    }
-  })
+  const ele = useMemo(() => {
+    return user?.role === "TEACHER" ? <CourseList /> : <StudentCourseList />
+  }, [user])
 
   return (
     <Div>
-      <CourseList />
+      {ele}
     </Div>
   )
 }
